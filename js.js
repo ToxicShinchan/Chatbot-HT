@@ -19,17 +19,14 @@ function addMessage(sender, message) {
 
 function addBotReply(message) {
     const messageElement = document.createElement('div');
-    messageElement.innerHTML = `<strong>Chatbot:</strong> ${message}`;
+    messageElement.innerHTML = `<strong>Helper:</strong> ${message}`;
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function processMessage(message) {
     const responses = {
-        'hello': 'Hi there!',
-        'how are you': 'I\'m doing well, thank you!',
-        'what is your name': 'I\'m a chatbot. You can call me Chatbot.',
-        'default': 'I\'m not sure how to respond to that.'
+        
     };
 
     const response = responses[message.toLowerCase()] || responses['default'];
