@@ -2,31 +2,84 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-image: url('images/bg2.jpg'); /* Path to the background image */
+    background-size: cover; /* Set background size to auto */
+    background-position: center top; /* Adjust background position */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
 }
 
-.chat-container {
-    width: 300px;
-    margin: 20px auto;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+
+.send-bar {
+    width: 600px;
+    margin: 120px auto 20px; /* Adjusted margin to move the send bar down */
     padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
-.chat-box {
-    height: 200px;
-    overflow-y: scroll;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+.send-bar img {
+    margin-right: 10px; /* Adjust margin to separate the image from the input field */
+    height: 40px; /* Adjust height of the image */
 }
+
+
+
 
 input[type="text"] {
-    width: 70%;
-    padding: 5px;
-    margin-right: 5px;
+    flex: 1; /* Allow the input field to grow and fill the available space */
+    padding: 8px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    outline: none; 
 }
 
 button {
-    padding: 5px 10px;
+    padding: 8px 15px;
     cursor: pointer;
+    background-color: #000000; 
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    margin-left: 5px; /* Add margin to separate the button from the input field */
 }
+
+.chat-container {
+    width: 1000px;
+    margin: 100px auto 20px; /* Increased margin-top to move the chat boxes down */
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center; /* Center the chat boxes horizontally */
+}
+
+.chat-box {
+    flex: 1; 
+    height: 300px; /* Increased height of the chat boxes */
+    overflow-y: scroll;
+    padding: 20px; /* Increased padding inside the chat boxes */
+    background-color: #82c7e8; /* Set a different background color for the chat boxes */
+    margin: 10px 10px; /* Increased margin between the chat boxes */
+}
+
+
+
+.chat-box:last-child {
+    margin-right: 0;
+    border-bottom: none; /* Remove bottom border from the last chat box */
+}
+
+.chat-box p {
+    margin: 10px 0; /* Increased margin around the chat messages */
+}
+
+.chat-box p:nth-child(odd) {
+    background-color: #f9f9f9; 
+}
+
