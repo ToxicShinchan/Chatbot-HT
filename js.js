@@ -30,16 +30,37 @@ function processMessage(message) {
         'default': ['Im sorry, I didnt understand that. Can you please rephrase?']
     };
 
-    const possibleReplies = responses[message.toLowerCase()] || responses['default'];
-    const replyIndex1 = Math.floor(Math.random() * possibleReplies.length);
-    let replyIndex2 = Math.floor(Math.random() * possibleReplies.length);
-    while (replyIndex2 === replyIndex1) {
-        replyIndex2 = Math.floor(Math.random() * possibleReplies.length);
+    let replied = false;
+
+    Object.keys(responses).forEach(keyword => {
+        if (message.toLowerCase().includes(keyword)) {
+            const possibleReplies = responses[keyword];
+            const replyIndex1 = Math.floor(Math.random() * possibleReplies.length);
+            let replyIndex2 = Math.floor(Math.random() * possibleReplies.length);
+            while (replyIndex2 === replyIndex1 && possibleReplies.length > 1) {
+                replyIndex2 = Math.floor(Math.random() * possibleReplies.length);
+            }
+            
+            const response1 = possibleReplies[replyIndex1];
+            const response2 = possibleReplies[replyIndex2];
+            
+            addBotReply(response1, chatBox1);
+            addBotReply(response2, chatBox2); 
+
+            replied = true;
+        }
+    });
+
+    
+    if (!replied) {
+        const possibleReplies = responses['default'];
+        const replyIndex1 = Math.floor(Math.random() * possibleReplies.length);
+        const replyIndex2 = Math.floor(Math.random() * possibleReplies.length);
+        
+        const response1 = possibleReplies[replyIndex1];
+        const response2 = possibleReplies[replyIndex2];
+        
+        addBotReply(response1, chatBox1);
+        addBotReply(response2, chatBox2); 
     }
-    
-    const response1 = possibleReplies[replyIndex1];
-    const response2 = possibleReplies[replyIndex2];
-    
-    addBotReply(response1, chatBox1);
-    addBotReply(response2, chatBox2); 
 }
